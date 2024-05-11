@@ -79,9 +79,9 @@ export default function Enable2fa(props) {
             Scan the following QR code or manually input the secret in{" "}
             <a
               target="_blank"
-              href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2"
+              href="https://gauth.apps.gbraad.nl/"
             >
-              Google Authenticator
+              OTP Authenticator
             </a>{" "}
             and then enter an OTP below to enable 2-Factor Authentication
           </div>
