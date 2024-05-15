@@ -24,13 +24,13 @@ export default function Profile(props) {
       })
       .catch((error) => {
         setUser(null);
-        setMessage("Error");
+        setMessage("Ошибка");
       });
   }, []);
 
   return (
     <Card>
-      <h2>Profile</h2>
+      <h2>Профиль</h2>
 
       {user && (
         <table>
@@ -46,9 +46,9 @@ export default function Profile(props) {
       {message && <div>{message}</div>}
 
       {user && user.twofaEnabled ? (
-        <Link to={"/disable-2fa"}>Disable 2FA</Link>
+        <Link to={"/disable-2fa"}>Выключить 2ФА</Link>
       ) : (
-        <Link to={"/enable-2fa"}>Enable 2FA</Link>
+        <Link to={"/enable-2fa"}>Включить 2ФА</Link>
       )}
 
       <Logout />

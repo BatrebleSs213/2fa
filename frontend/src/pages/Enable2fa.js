@@ -33,7 +33,7 @@ export default function Enable2fa(props) {
           navigate("/profile");
         } else {
           setSecret(null);
-          setMessage("Error");
+          setMessage("Ошибка");
         }
       });
   }, [navigate]);
@@ -62,9 +62,9 @@ export default function Enable2fa(props) {
           error.response.status === 400 &&
           !error.response.data.twofaEnabled
         ) {
-          setMessage("OTP verification failed: Invalid token");
+          setMessage("Неудачное подтверждение ОТР: Недействительный жетон");
         } else {
-          setMessage("Error");
+          setMessage("Ошибка");
         }
       });
   }
@@ -73,17 +73,17 @@ export default function Enable2fa(props) {
     <Card>
       {secret && (
         <>
-          <h2>Enable 2FA</h2>
+          <h2>Включить 2ФА</h2>
 
           <div className="twofa_instructions">
-            Scan the following QR code or manually input the secret in{" "}
+            Отсканируйте QR-код или вручную введите секрет в{" "}
             <a
               target="_blank"
               href="https://gauth.apps.gbraad.nl/"
             >
-              OTP Authenticator
+              OTP Аутентификатор
             </a>{" "}
-            and then enter an OTP below to enable 2-Factor Authentication
+            и затем введите одноразовый пароль для включения Двухфакторной Аутентификации
           </div>
 
           <div className="twofa_secret">
@@ -101,13 +101,13 @@ export default function Enable2fa(props) {
             </div>
 
             <button type="submit" onClick={onClick}>
-              Enable 2FA
+              Включить 2ФА
             </button>
           </form>
         </>
       )}
 
-      <Link to={"/profile"}>Go back to profile</Link>
+      <Link to={"/profile"}>Вернуться в профиль</Link>
 
       {message && <div>{message}</div>}
     </Card>

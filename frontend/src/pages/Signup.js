@@ -26,29 +26,29 @@ export default function Signup(props) {
       )
       .then((response) => {
         if (response.status === 201) {
-          setMessage("Signup successful. Redirecting to login page now...");
+          setMessage("Регистрация успешна. Направляем вас на страницу входа...");
           setTimeout(() => {
             navigate("/login");
           }, 3000);
         }
       })
       .catch((error) => {
-        setMessage("Error in signup");
+        setMessage("Ошибка в регистрации");
       });
   }
 
   return (
     <Card>
-      <h2>Signup</h2>
+      <h2>Регистрация</h2>
 
       <form>
         <div className="form_field_container">
-          <label>Email</label>
+          <label>Почта</label>
           <input type="email" onChange={(e) => setEmail(e.target.value)} />
         </div>
 
         <div className="form_field_container">
-          <label>Password</label>
+          <label>Пароль</label>
           <input
             type="password"
             onChange={(e) => setPassword(e.target.value)}
@@ -56,18 +56,18 @@ export default function Signup(props) {
         </div>
 
         <div className="form_field_container">
-          <label>Your Age</label>
+          <label>Ваш возраст</label>
           <input type="number" onChange={(e) => setAge(e.target.value)} />
         </div>
 
         <button type="submit" onClick={onClick}>
-          Signup
+          Регистрация
         </button>
       </form>
 
       <div className="or">or</div>
 
-      <Link to={"/login"}>Login</Link>
+      <Link to={"/login"}>Войти</Link>
 
       {message && <div className="message">{message}</div>}
     </Card>

@@ -49,5 +49,5 @@ app.post(
 app.all("*", controllers.catchAll);
 
 app.listen(PORT, () =>
-    console.log(`Express started on http://localhost:${PORT}`)
+    console.log(`Express запущен на http://localhost:${PORT}`)
 );

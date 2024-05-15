@@ -37,22 +37,22 @@ export default function Login(props) {
         }
       })
       .catch((error) => {
-        setMessage("Error logging in");
+        setMessage("Возникла ошибка во время входа...");
       });
   }
 
   return (
     <Card>
-      <h2>Login</h2>
+      <h2>Вход</h2>
 
       <form>
         <div className="form_field_container">
-          <label>Email</label>
+          <label>Почта</label>
           <input type="email" onChange={(e) => setEmail(e.target.value)} />
         </div>
 
         <div className="form_field_container">
-          <label>Password</label>
+          <label>Пароль</label>
           <input
             type="password"
             onChange={(e) => setPassword(e.target.value)}
@@ -60,13 +60,13 @@ export default function Login(props) {
         </div>
 
         <button type="submit" onClick={onClick}>
-          Login
+          Войти
         </button>
       </form>
 
       <div className="or">or</div>
 
-      <Link to={"/signup"}>Signup</Link>
+      <Link to={"/signup"}>Регистрация</Link>
 
       {message && <div className="message">{message}</div>}
     </Card>

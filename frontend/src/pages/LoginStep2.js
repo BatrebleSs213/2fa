@@ -43,14 +43,14 @@ export default function LoginStep2(props) {
           setMessage(error.response.data.message);
           localStorage.removeItem("loginStep2VerificationToken");
         } else {
-          setMessage("Error logging in");
+          setMessage("Возникла ошибка во время входа...");
         }
       });
   }
 
   return (
     <Card>
-      <h2>Login Step 2</h2>
+      <h2>Второй шаг входа</h2>
 
       <form className="otp">
         <div className="form_field_container">
@@ -59,7 +59,7 @@ export default function LoginStep2(props) {
         </div>
 
         <button type="submit" onClick={onClick}>
-          Submit
+          Войти
         </button>
       </form>
 

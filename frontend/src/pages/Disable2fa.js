@@ -27,7 +27,7 @@ export default function Disable2fa(props) {
       })
       .catch((error) => {
         setUser(null);
-        setMessage("Error");
+        setMessage("Ошибка");
       });
   }, []);
 
@@ -49,7 +49,7 @@ export default function Disable2fa(props) {
         }
       })
       .catch((error) => {
-        setMessage("Error");
+        setMessage("Ошибка");
       });
   }
 
@@ -57,11 +57,11 @@ export default function Disable2fa(props) {
     <Card>
       {user?.twofaEnabled && (
         <a href="" onClick={onClick}>
-          Disable 2FA
+          Отключить 2ФА
         </a>
       )}
 
-      <Link to={"/profile"}>Go back to profile</Link>
+      <Link to={"/profile"}>Вернуться в профиль</Link>
 
       {message && <div>{message}</div>}
     </Card>

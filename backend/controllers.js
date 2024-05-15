@@ -7,7 +7,7 @@ const {UserModel} = require("./models.js");
 
 const signup = async (req, res) => {
     return res.status(201).json({
-        message: "Signup successful",
+        message: "Регистрация успешна",
         user: req.user,
     });
 };
@@ -19,13 +19,13 @@ const login = async (req, res, next) => {
         async (err, user, info) => {
             if (err || !user) {
                 return res.status(401).json({
-                    message: "Invalid email or password",
+                    message: "Некорректная почта или пароль",
                 });
             }
 
             if (!user.twofaEnabled) {
                 return res.json({
-                    message: "Login successful",
+                    message: "Вход успешен",
                     twofaEnabled: false,
                     token: jwt.sign(
                         {
@@ -36,7 +36,7 @@ const login = async (req, res, next) => {
                 });
             } else {
                 return res.json({
-                    message: "Please complete 2-factor authentication",
+                    message: "Пожалуйста, завершите Двухфакторную Аутентификацию",
                     twofaEnabled: true,
                     loginStep2VerificationToken: jwt.sign(
                         {
@@ -64,7 +64,7 @@ const loginStep2 = async (req, res) => {
         );
     } catch (err) {
         return res.status(401).json({
-            message: "You are not authorized to perform login step-2",
+            message: "Вы не авторизованы для завершения перехода на страницу входа",
         });
     }
 
@@ -74,11 +74,11 @@ const loginStep2 = async (req, res) => {
     });
     if (!authenticator.check(token, user.twofaSecret)) {
         return res.status(400).json({
-            message: "OTP verification failed: Invalid token",
+            message: "Неудачное подтверждение ОТР: Недействительный жетон",
         });
     } else {
         return res.json({
-            message: "OTP verification successful",
+            message: "Успешное подтверждение ОТР",
             token: jwt.sign(
                 {
                     user: {email: user.email},
@@ -91,7 +91,7 @@ const loginStep2 = async (req, res) => {
 
 const profile = async (req, res) => {
     return res.json({
-        message: "Success",
+        message: "Успех",
         user: req.user,
     });
 };
@@ -101,7 +101,7 @@ const generate2faSecret = async (req, res) => {
 
     if (user.twofaEnabled) {
         return res.status(400).json({
-            message: "2FA already verified and enabled",
+            message: "2ФА уже включена и подтверждена",
             twofaEnabled: user.twofaEnabled,
         });
     }
@@ -112,7 +112,7 @@ const generate2faSecret = async (req, res) => {
     const appName = "Express 2FA Demo";
 
     return res.json({
-        message: "2FA secret generation successful",
+        message: "Генерация секрета 2ФА успешно",
         secret: secret,
         qrImageDataUrl: await qrcode.toDataURL(
             authenticator.keyuri(req.user.email, appName, secret)
@@ -125,7 +125,7 @@ const verifyOtp = async (req, res) => {
     const user = await UserModel.findOne({email: req.user.email});
     if (user.twofaEnabled) {
         return res.json({
-            message: "2FA already verified and enabled",
+            message: "2ФА уже включена и подтверждена",
             twofaEnabled: user.twofaEnabled,
         });
     }
@@ -133,7 +133,7 @@ const verifyOtp = async (req, res) => {
     const token = req.body.token.replaceAll(" ", "");
     if (!authenticator.check(token, user.twofaSecret)) {
         return res.status(400).json({
-            message: "OTP verification failed: Invalid token",
+            message: "Неудачное подтверждение ОТР: Недействительный жетон",
             twofaEnabled: user.twofaEnabled,
         });
     } else {
@@ -141,7 +141,7 @@ const verifyOtp = async (req, res) => {
         user.save();
 
         return res.json({
-            message: "OTP verification successful",
+            message: "Успешное подтверждение ОТР",
             twofaEnabled: user.twofaEnabled,
         });
     }
@@ -154,14 +154,14 @@ const disable2fa = async (req, res) => {
     await user.save();
 
     return res.json({
-        message: "2FA disabled successfully",
+        message: "2ФА успешно отключена",
         twofaEnabled: user.twofaEnabled,
     });
 };
 
 const catchAll = async (req, res) => {
     return res.status(404).json({
-        message: `An error occurred or ${req.originalUrl} not found`,
+        message: `Возникла ошибка или адрес ${req.originalUrl} не найден`,
     });
 };
 

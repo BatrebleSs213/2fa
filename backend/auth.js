@@ -18,7 +18,7 @@ passport.use(
             try {
                 if (await UserModel.findOne({email})) {
                     return done(null, false, {
-                        message: `User with email ${email} already exists`,
+                        message: `Пользователь с таким адресом почты ${email} уже существует`,
                     });
                 }
 
@@ -31,7 +31,7 @@ passport.use(
                 });
 
                 return done(null, {
-                    email: user.email,
+                    email:  user.email,
                     age: user.age,
                 });
             } catch (error) {
@@ -55,7 +55,7 @@ passport.use(
 
                 if (!user) {
                     return done(null, false, {
-                        message: "Invalid email or password",
+                        message: "Некорректная почта или пароль",
                     });
                 }
 
@@ -63,12 +63,12 @@ passport.use(
 
                 if (!validate) {
                     return done(null, false, {
-                        message: "Invalid email or password",
+                        message: "Некорректная почта или пароль",
                     });
                 }
 
                 return done(null, user, {
-                    message: "Logged in successfully",
+                    message: "Успешный вход",
                 });
             } catch (error) {
                 return done(error);
