@@ -8,6 +8,7 @@ import LoginStep2 from "./pages/LoginStep2";
 import Profile from "./pages/Profile";
 import Enable2fa from "./pages/Enable2fa";
 import Disable2fa from "./pages/Disable2fa";
+import TicTac from "./pages/TicTac";
 
 export default function App() {
   axios.defaults.baseURL = BACKEND_API_URL;
@@ -23,6 +24,7 @@ export default function App() {
         path="/disable-2fa"
         element={<Private element={<Disable2fa />} />}
       />
+      <Route path="/tictac" element={<Private element={<TicTac />} />} />
       <Route path="*" element={<Navigate to="/profile" replace={true} />} />
     </Routes>
   );

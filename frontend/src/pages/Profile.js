@@ -50,7 +50,7 @@ export default function Profile(props) {
       ) : (
         <Link to={"/enable-2fa"}>Включить 2ФА</Link>
       )}
-
+      
       <Logout />
     </Card>
   );
