@@ -21,7 +21,7 @@ import { useState } from 'react';
         }
         onPlay(nextSquares);
     }
-
+    
     const winner = calculateWinner(squares);
     let status;
     if (winner) {
@@ -67,7 +67,8 @@ import { useState } from 'react';
     function jumpTo(nextMove) {
         setCurrentMove(nextMove);
     }
-
+       
+    
     const moves = history.map((squares, move) => {
         let description;
         if (move > 0) {
@@ -90,8 +91,16 @@ import { useState } from 'react';
             <div className="game-info">
                 <ol>{moves}</ol>
             </div>
+            <div>
+            <button>
+            <a href="/Profile"> Профиль</a>
+            </button>     
+            </div>
         </div>
+    
     );
+
+    
 }
 
 function calculateWinner(squares) {
@@ -112,4 +121,5 @@ function calculateWinner(squares) {
         }
     }
     return null;
+    
 }

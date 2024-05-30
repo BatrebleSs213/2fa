@@ -9,5 +9,5 @@ export default function Logout(props) {
     navigate("/login");
   }
 
-  return <a onClick={onClick} href=''>Выйти</a>;
+  return <a onClick={onClick} href='/Login'>Выйти</a>;
 }
