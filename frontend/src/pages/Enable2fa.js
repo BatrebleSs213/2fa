@@ -90,7 +90,7 @@ export default function Enable2fa(props) {
             <img src={secret.qrImageDataUrl} />
 
             <p>
-              Secret: <b>{secret.secret}</b>
+              Секрет: <b>{secret.secret}</b>
             </p>
           </div>
 

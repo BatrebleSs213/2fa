@@ -62,6 +62,8 @@ export default function Disable2fa(props) {
       )}
 
       <Link to={"/profile"}>Вернуться в профиль</Link>
+      
+      <a href="/TicTac"> Содержание</a>
 
       {message && <div>{message}</div>}
     </Card>
