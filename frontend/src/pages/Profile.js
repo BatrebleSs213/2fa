@@ -46,15 +46,20 @@ export default function Profile(props) {
       {message && <div>{message}</div>}
 
       {user && user.twofaEnabled ? (
-        <Link to={"/disable-2fa"}>Выключить 2ФА</Link>
+        <Link to={"/disable-2fa"}>Выключить 2А</Link>
       ) : (
         <Link to={"/enable-2fa"}>Включить 2ФА</Link>
       )}
-    
-      <Logout />
-     
-      <a href="/TicTac"> Содержание</a>
       
+      {user && user.twofaEnabled ? (
+        <Link to={"/TicTac"}>Содержание</Link>
+      ) : (
+        <div className="or">Не подключена 2ФА</div>
+      )}
+    
+
+      <Logout /> 
+
     </Card>
   );
 }
