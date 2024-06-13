@@ -64,7 +64,7 @@ export default function Login(props) {
         </button>
       </form>
 
-      <div className="or">or</div>
+      <div className="or">или</div>
 
       <Link to={"/signup"}>Регистрация</Link>
 
